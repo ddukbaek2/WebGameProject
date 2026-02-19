@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 2cd607346dbd37f41a37f41616cd5cb1
+timeCreated: 1514910217
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 135218
+  packageName: 3D Game Kit - Props Pack
+  packageVersion: 6.0
+  assetPath: Assets/3D Game Kit - Props Pack/Props/Stonework/Materials/Wall02_Mat.mat
+  uploadId: 689476

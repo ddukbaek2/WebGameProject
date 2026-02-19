@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes">
+		<link rel="icon" type="image/png" href="TemplateData/favicon.png">
+		<title>{{{ PRODUCT_NAME }}}</title>
+
+#if SHOW_DIAGNOSTICS
+		<link rel="stylesheet" href="<<<TemplateData/diagnostics.css>>>">
+		<script src="<<<TemplateData/diagnostics.js>>>"></script>
+#endif
+
+		<link rel="stylesheet" href="TemplateData/style.css">
+	</head>
+
+	<body>	
+		<canvas id="unity-canvas" tabindex="-1" style="background: {{{ BACKGROUND_FILENAME ? 'url(\'Build/' + BACKGROUND_FILENAME.replace(/'/g, '%27') + '\') center / cover' : BACKGROUND_COLOR }}}">
+		</canvas>
+
+#if SHOW_DIAGNOSTICS
+		<div id="unity-footer">
+			<img id="diagnostics-icon" src="TemplateData/webmemd-icon.png">
+		</div>
+#endif
+
+		<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+		<script src="Build/{{{ LOADER_FILENAME }}}"></script>
+		<script>
+			const isMobileBrowser = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+			const canvas = document.getElementById("unity-canvas");
+			
+			// 웹브라우저 크기에 따라 캔버스 영역 변경.
+			function ResizeCanvasToWindow() {
+				
+				// 모바일 브라우저에서는 잦은 상태변경 + 정보불확실이슈 등으로 사용 제외.
+				if (isMobileBrowser) return;
+				
+				canvas.style.width = window.innerWidth + "px";
+				canvas.style.height = window.innerHeight + "px";
+			}
+
+			// 웹브라우저 로드 및 크기변경 이벤트 등록.
+			window.addEventListener("resize", ResizeCanvasToWindow);
+			window.addEventListener("load", ResizeCanvasToWindow);
+
+			// 모바일 웹 브라우저일 때.
+			if (isMobileBrowser) {
+				canvas.style.width = "100%";
+				canvas.style.height = "100%";
+				canvas.style.position = "fixed";
+				canvas.style.top = "0";
+				canvas.style.left = "0";
+				document.body.style.textAlign = "left";
+
+#if SHOW_DIAGNOSTICS
+				// position the diagnostics icon in the corner on the canvas
+				let diagnostics_icon = document.getElementById("diagnostics-icon");
+				diagnostics_icon.style.position = "fixed";
+				diagnostics_icon.style.bottom = "10px";
+				diagnostics_icon.style.right = "0px";
+				canvas.after(diagnostics_icon);
+#endif
+
+			}
+
+			// 유니티 런타임 실행.
+			createUnityInstance(canvas, {
+				arguments: [],
+				dataUrl: "Build/{{{ DATA_FILENAME }}}",
+				frameworkUrl: "Build/{{{ FRAMEWORK_FILENAME }}}",
+
+#if USE_THREADS
+				workerUrl: "Build/{{{ WORKER_FILENAME }}}",
+#endif
+
+#if USE_WASM
+				codeUrl: "Build/{{{ CODE_FILENAME }}}",
+#endif
+
+#if SYMBOLS_FILENAME
+				symbolsUrl: "Build/{{{ SYMBOLS_FILENAME }}}",
+#endif
+
+				streamingAssetsUrl: "StreamingAssets",
+				companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
+				productName: {{{ JSON.stringify(PRODUCT_NAME) }}},
+				productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}},
+				
+				// Uncomment this to separately control WebGL canvas render size and DOM element size.
+				// matchWebGLToCanvasSize: false,
+
+				// Uncomment this to override low DPI rendering on high DPI displays.
+				// devicePixelRatio: 1,
+
+			}).then((unityInstance) => {
+
+#if SHOW_DIAGNOSTICS
+				document.getElementById("diagnostics-icon").onclick = () => {
+					unityDiagnostics.openDiagnosticsDiv(unityInstance.GetMetricsInfo);
+				};
+#endif
+
+			}).catch((message) => {
+				alert(message);
+			});
+		</script>
+	</body>
+</html>

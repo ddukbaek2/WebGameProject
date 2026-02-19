@@ -1,0 +1,20 @@
+/* style.css - Unity WebGL "WebUI" 템플릿용 초경량 스타일 */
+html, body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	overflow: hidden;
+	background: #000000;
+	width: 100vw;
+	height: 100vh;
+}
+
+#unity-canvas {
+	display: block;
+	width: 100vw;
+	height: 100vh;
+	background: #000000;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}

@@ -1,0 +1,1277 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Crockhead.Scripting</name>
+    </assembly>
+    <members>
+        <member name="T:Crockhead.Scripting.IExpression">
+            <summary>
+            표현식 인터페이스.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.IExpression.Evaluate(Crockhead.Scripting.Context)">
+            <summary>
+            평가.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.IStatement">
+            <summary>
+            구문 인터페이스.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.FunctionDefinition">
+            <summary>
+            실제 함수 데이터.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.FunctionDefinition.Name">
+            <summary>
+            이름 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.FunctionDefinition.Parameters">
+            <summary>
+            파라메터 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.FunctionDefinition.Body">
+            <summary>
+            구문 목록 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.FunctionDefinition.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.FunctionDefinition.#ctor(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{Crockhead.Scripting.IStatement})">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.Number">
+            <summary>
+            숫자.
+            <para>임의정밀 유리수.</para>
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.Number.Numerator">
+            <summary>
+            분자 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.Number.Denominator">
+            <summary>
+            분모 프로퍼티. (항상 > 0)
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.Number.IsZero">
+            <summary>
+            0인지 여부 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Number.#ctor(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Number.Equals(Crockhead.Scripting.Number)">
+            <summary>
+            동일 여부 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Number.Equals(System.Object)">
+            <summary>
+            동일 여부 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Number.GetHashCode">
+            <summary>
+            해시값 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Number.ToString">
+            <summary>
+            문자열 변환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Number.ToDisplayString(System.Int32)">
+            <summary>
+            출력 문자열 변환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Number.Parse(System.Int64)">
+            <summary>
+            정수로 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Number.Parse(System.String)">
+            <summary>
+            소숫점이 존재하는 문자열로 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Number.op_Equality(Crockhead.Scripting.Number,Crockhead.Scripting.Number)">
+            <summary>
+            비교 연산.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Number.op_Inequality(Crockhead.Scripting.Number,Crockhead.Scripting.Number)">
+            <summary>
+            비교 연산.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Number.op_Addition(Crockhead.Scripting.Number,Crockhead.Scripting.Number)">
+            <summary>
+            더하기 연산.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Number.op_Subtraction(Crockhead.Scripting.Number,Crockhead.Scripting.Number)">
+            <summary>
+            빼기 연산.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Number.op_Multiply(Crockhead.Scripting.Number,Crockhead.Scripting.Number)">
+            <summary>
+            곱하기 연산.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Number.op_Division(Crockhead.Scripting.Number,Crockhead.Scripting.Number)">
+            <summary>
+            나누기 연산.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Number.Remainder(Crockhead.Scripting.Number,Crockhead.Scripting.Number)">
+            <summary>
+            나머지 연산.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.AssignmentExpression">
+            <summary>
+            대입 표현식.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.AssignmentExpression.Name">
+            <summary>
+            이름 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.AssignmentExpression.Expression">
+            <summary>
+            표현식 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.AssignmentExpression.#ctor(System.String,Crockhead.Scripting.IExpression)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.AssignmentExpression.Evaluate(Crockhead.Scripting.Context)">
+            <summary>
+            평가.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.BinaryExpression">
+            <summary>
+            이항 표현식.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.BinaryExpression.Left">
+            <summary>
+            좌항 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.BinaryExpression.Right">
+            <summary>
+            좌항 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.BinaryExpression.Operator">
+            <summary>
+            연산자.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.BinaryExpression.#ctor(Crockhead.Scripting.IExpression,Crockhead.Scripting.IExpression,System.String)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.BinaryExpression.Evaluate(Crockhead.Scripting.Context)">
+            <summary>
+            평가.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.CallExpression">
+            <summary>
+            호출 표현식.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.CallExpression.Name">
+            <summary>
+            이름 프로퍼티. (이 경우는 호출 표현식으로 호출 될 함수 이름)
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.CallExpression.Arguments">
+            <summary>
+            함수 호출시 전달되는 인자 목록 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.CallExpression.#ctor(System.String,System.Collections.Generic.List{Crockhead.Scripting.IExpression})">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.CallExpression.Evaluate(Crockhead.Scripting.Context)">
+            <summary>
+            평가.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.LiteralExpression">
+            <summary>
+            상수 표현식.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.LiteralExpression.Value">
+            <summary>
+            값 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.LiteralExpression.#ctor(Crockhead.Scripting.Variable)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.LiteralExpression.Evaluate(Crockhead.Scripting.Context)">
+            <summary>
+            평가.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.VariableExpression">
+            <summary>
+            변수 표현식.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.VariableExpression.Name">
+            <summary>
+            이름 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.VariableExpression.#ctor(System.String)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.VariableExpression.Evaluate(Crockhead.Scripting.Context)">
+            <summary>
+            평가.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.Lexer">
+            <summary>
+            어휘 분석기.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.Lexer.m_Source">
+            <summary>
+            스크립트.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.Lexer.m_Position">
+            <summary>
+            위치.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.Lexer.m_Line">
+            <summary>
+            행. (줄)
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.Lexer.m_Column">
+            <summary>
+            열. (현재 줄에서의 커서)
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Lexer.#ctor(System.String)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Lexer.Next">
+            <summary>
+            다음 해석.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.Parser">
+            <summary>
+            파서.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.Parser.m_Lexer">
+            <summary>
+            구문 해석기.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.Parser.m_Token">
+            <summary>
+            현재 해석 할 문자열 덩어리.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.#ctor(System.String)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.Parse(System.Collections.Generic.Dictionary{System.String,Crockhead.Scripting.FunctionDefinition}@)">
+            <summary>
+            해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.Next">
+            <summary>
+            다음 구문 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.IsSymbol(System.String)">
+            <summary>
+            기호 여부.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ExpectIdentifier">
+            <summary>
+            식별자 검사.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ExpectSymbol(System.String)">
+            <summary>
+            기호 검사.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ExpectKeyword(System.String)">
+            <summary>
+            키워드 검사.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ParseStatement">
+            <summary>
+            구문 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ParseIfStatement">
+            <summary>
+            조건 구문 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ParseForStatement">
+            <summary>
+            반복 구문 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ParseSwitchStatement">
+            <summary>
+            분기 구문 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ParseBreak">
+            <summary>
+            탈출 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ParseContinue">
+            <summary>
+            이어하기 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ParseBlock">
+            <summary>
+            블록 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ParseExpression">
+            <summary>
+            표현식 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ParseAddSub">
+            <summary>
+            더하기 빼기 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ParseMulDivMod">
+            <summary>
+            곱하기 나누기 나머지 해석.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Parser.ParsePrimary">
+            <summary>
+            기본 해석.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.Token">
+            <summary>
+            토큰.
+            <para>스크립트의 최소 의미 단위 블럭.</para>
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.Token.Type">
+            <summary>
+            토큰 종류 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.Token.FilePath">
+            <summary>
+            파일 경로 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.Token.Line">
+            <summary>
+            줄 번호 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.Token.Column">
+            <summary>
+            열 위치 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.Token.Value">
+            <summary>
+            값 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Token.#ctor(Crockhead.Scripting.TokenType,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Token.#ctor(Crockhead.Scripting.TokenType,System.Int32,System.Int32,System.String)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.TokenType">
+            <summary>
+            토큰의 종류.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.TokenType.Identifier">
+            <summary>
+            식별자.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.TokenType.Number">
+            <summary>
+            숫자.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.TokenType.String">
+            <summary>
+            문자열.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.TokenType.Symbol">
+            <summary>
+            심볼.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.TokenType.Keyword">
+            <summary>
+            키워드.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.TokenType.EndOfFile">
+            <summary>
+            파일의 끝.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.BreakStatement">
+            <summary>
+            탈출 구문.
+            <para>break;</para>
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.ContinueStatement">
+            <summary>
+            이어하기 구문.
+            <para>continue;</para>
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.ExpressionStatement">
+            <summary>
+            표현식 구문.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.ExpressionStatement.Expression">
+            <summary>
+            표현식 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.ExpressionStatement.#ctor(Crockhead.Scripting.IExpression)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.ForStatement">
+            <summary>
+            반복 구문.
+            <para>for ( init ; cond ; post ) { body }</para>
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.ForStatement.Initializer">
+            <summary>
+            초기화 표현식 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.ForStatement.Condition">
+            <summary>
+            조건 표현식 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.ForStatement.Post">
+            <summary>
+            현재 루프가 끝날때 처리 표현식 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.ForStatement.Body">
+            <summary>
+            루프 내에서 처리 표현식 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.ForStatement.#ctor(Crockhead.Scripting.IStatement,Crockhead.Scripting.IExpression,Crockhead.Scripting.IExpression,System.Collections.Generic.List{Crockhead.Scripting.IStatement})">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.FunctionDeclarationStatement">
+            <summary>
+            함수 선언 구문.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.FunctionDeclarationStatement.Name">
+            <summary>
+            이름 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.FunctionDeclarationStatement.Parameters">
+            <summary>
+            파라메터 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.FunctionDeclarationStatement.Body">
+            <summary>
+            내용 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.FunctionDeclarationStatement.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.FunctionDeclarationStatement.#ctor(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{Crockhead.Scripting.IStatement})">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.IfStatement">
+            <summary>
+            조건 구문.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.IfStatement.Condition">
+            <summary>
+            조건 표현식 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.IfStatement.Then">
+            <summary>
+            성공시 처리 표현식 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.IfStatement.ElseIf">
+            <summary>
+            실패시 대체 조건 표현식 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.IfStatement.Else">
+            <summary>
+            모두 실패시 거짓일 때 처리.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.IfStatement.#ctor(Crockhead.Scripting.IExpression,System.Collections.Generic.List{Crockhead.Scripting.IStatement},System.Collections.Generic.List{System.ValueTuple{Crockhead.Scripting.IExpression,System.Collections.Generic.List{Crockhead.Scripting.IStatement}}},System.Collections.Generic.List{Crockhead.Scripting.IStatement})">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.ReturnStatement">
+            <summary>
+            반환 구문.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.ReturnStatement.Expression">
+            <summary>
+            표현식 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.ReturnStatement.#ctor(Crockhead.Scripting.IExpression)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.SwitchStatement">
+            <summary>
+            분기 구문.
+            <para>switch (expr) { case v: ...; default: ...; }</para>
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.SwitchStatement.Expression">
+            <summary>
+            표현식 구문.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.SwitchStatement.Cases">
+            <summary>
+            분기 구문.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.SwitchStatement.DefaultBody">
+            <summary>
+            기본 분기 구문.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.SwitchStatement.#ctor(Crockhead.Scripting.IExpression,System.Collections.Generic.List{System.ValueTuple{Crockhead.Scripting.IExpression,System.Collections.Generic.List{Crockhead.Scripting.IStatement}}},System.Collections.Generic.List{Crockhead.Scripting.IStatement})">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.VariableDeclarationStatement">
+            <summary>
+            변수 선언 구문.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.VariableDeclarationStatement.Name">
+            <summary>
+            이름 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.VariableDeclarationStatement.Expression">
+            <summary>
+            초기값 표현식 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.VariableDeclarationStatement.#ctor(System.String,Crockhead.Scripting.IExpression)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.SyntaxException">
+            <summary>
+            문법 오류로 인한 예외.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.SyntaxException.FilePath">
+            <summary>
+            파일 경로.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.SyntaxException.Line">
+            <summary>
+            줄 번호.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.SyntaxException.Column">
+            <summary>
+            열 위치.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.SyntaxException.#ctor(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.SyntaxException.#ctor(System.Int32,System.Int32,System.String)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.SyntaxException.#ctor(System.String)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.Context">
+            <summary>
+            표현식 객체가 평가시 변수 접근이나 함수 호출시 사용되는 컨텍스트.
+            <para>현재 스크립트 실행 주체와 표현식 객체를 간접적으로 연결하기 위한 설계적 용도.</para>
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.Context.m_Session">
+            <summary>
+            실행 주체.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.Context.m_Scope">
+            <summary>
+            현재 스코프.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Context.#ctor(Crockhead.Scripting.Session,Crockhead.Scripting.Scope)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Context.SetVariable(System.String,Crockhead.Scripting.Variable)">
+            <summary>
+            변수 설정.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Context.GetVariable(System.String)">
+            <summary>
+            변수 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Context.TryGetVariable(System.String,Crockhead.Scripting.Variable@)">
+            <summary>
+            변수 반환 시도.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Context.Call(System.String,Crockhead.Scripting.Variable[])">
+            <summary>
+            함수 호출.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.Function">
+            <summary>
+            함수.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.Function.Definition">
+            <summary>
+            함수 정의.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.Function.CapturedScope">
+            <summary>
+            현재 스코프.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Function.#ctor(Crockhead.Scripting.FunctionDefinition,Crockhead.Scripting.Scope)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Function.Equals(System.Object)">
+            <summary>
+            동일 여부 반환.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.OnBindingFunctionDelegate">
+            <summary>
+            바인딩 할 함수 델리게이트.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.Scope">
+            <summary>
+            변수 공간.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.Scope.m_Variables">
+            <summary>
+            현재 공간의 변수 목록.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.Scope.m_Parent">
+            <summary>
+            상위 변수 공간.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Scope.#ctor(Crockhead.Scripting.Scope)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Scope.TryGetVariable(System.String,Crockhead.Scripting.Variable@)">
+            <summary>
+            변수 반환 시도.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Scope.GetVariable(System.String)">
+            <summary>
+            변수 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Scope.SetLocalVariable(System.String,Crockhead.Scripting.Variable)">
+            <summary>
+            지역 변수 설정.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Scope.SetVariable(System.String,Crockhead.Scripting.Variable)">
+            <summary>
+            지역 변수 및 상위 지역 변수 설정.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Scope.ExistsVariable(System.String)">
+            <summary>
+            현재 스코프에 변수 존재 여부 반환.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.Session">
+            <summary>
+            실행 세션.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.Session.m_BindingFunctions">
+            <summary>
+            바인딩 한 함수 목록.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.Session.m_Functions">
+            <summary>
+            스크립트 함수 목록.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.Session.m_Scope">
+            <summary>
+            전역 스코프.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Session.#ctor(System.Collections.Generic.Dictionary{System.String,Crockhead.Scripting.OnBindingFunctionDelegate},System.Collections.Generic.Dictionary{System.String,Crockhead.Scripting.FunctionDefinition})">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Session.Call(System.String,Crockhead.Scripting.Variable[])">
+            <summary>
+            함수 이름으로 호출.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Session.Call(Crockhead.Scripting.FunctionDefinition,Crockhead.Scripting.Variable[])">
+            <summary>
+            함수 호출.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Session.Call(Crockhead.Scripting.Function,Crockhead.Scripting.Variable[])">
+            <summary>
+            함수 호출.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Session.ExecuteStatement(Crockhead.Scripting.Scope,Crockhead.Scripting.IStatement)">
+            <summary>
+            구문 실행.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Session.ValuesEqual(Crockhead.Scripting.Variable,Crockhead.Scripting.Variable)">
+            <summary>
+            switch-case 비교용 헬퍼.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.SyntaxDiagnostic">
+            <summary>
+            문법 진단 객체.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.SyntaxDiagnostic.FilePath">
+            <summary>
+            파일 경로 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.SyntaxDiagnostic.Line">
+            <summary>
+            줄 번호 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.SyntaxDiagnostic.Column">
+            <summary>
+            열 위치 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.SyntaxDiagnostic.Message">
+            <summary>
+            메시지 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.SyntaxDiagnostic.#ctor(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.SyntaxDiagnostic.#ctor(System.Int32,System.Int32,System.String)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.SyntaxDiagnostic.#ctor(System.String)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.SyntaxDiagnostic.ToString">
+            <summary>
+            문자열 변환.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.BreakTrigger">
+            <summary>
+            break 유발자.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.ContinueTrigger">
+            <summary>
+            continue 유발자.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.ReturnTrigger">
+            <summary>
+            반환 유발자.
+            <para>Exception 기반으로 throw 된 ReturnTrigger가 값을 스크립트 구문 해석 중에 모든 스택을 건너뛰고 즉시 반환 시킨다.</para>
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.ReturnTrigger.Value">
+            <summary>
+            값 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.ReturnTrigger.#ctor(Crockhead.Scripting.Variable)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.ScriptEngine">
+            <summary>
+            스크립트 엔진.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.ScriptEngine.m_BindingFunctions">
+            <summary>
+            바인딩 된 C# 함수 목록.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.ScriptEngine.m_Functions">
+            <summary>
+            스크립트 로드 된 전역 함수 목록.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.ScriptEngine.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.ScriptEngine.Load(System.String,System.Boolean)">
+            <summary>
+            스크립트 불러오기.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.ScriptEngine.Unload">
+            <summary>
+            스크립트 언로드.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.ScriptEngine.AddFunction(System.String,Crockhead.Scripting.OnBindingFunctionDelegate)">
+            <summary>
+            바인딩 함수 추가.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.ScriptEngine.RemoveFunction(System.String)">
+            <summary>
+            바인딩 함수 제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.ScriptEngine.RemoveAllFunctions">
+            <summary>
+            모든 바인딩 함수 제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.ScriptEngine.Execute(System.String,Crockhead.Scripting.Variable[])">
+            <summary>
+            로드된 스크립트 실행. (함수명으로 실행)
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.ScriptEngine.ValidateSyntax(System.String)">
+            <summary>
+            문법 유효성 검사.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.Value">
+            <summary>
+            객체의 값.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.Value.Type">
+            <summary>
+            값 종류.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Value.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Value.ToBoolean">
+            <summary>
+            논리 타입 변환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Value.ToString">
+            <summary>
+            문자열 변환.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.ValueType">
+            <summary>
+            값의 종류.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.ValueType.Null">
+            <summary>
+            없음.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.ValueType.Boolean">
+            <summary>
+            논리.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.ValueType.Number">
+            <summary>
+            숫자. (정수/실수)
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.ValueType.String">
+            <summary>
+            문자열.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.ValueType.Function">
+            <summary>
+            함수.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.BooleanValue">
+            <summary>
+            논리 값.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.BooleanValue.Value">
+            <summary>
+            실제 값 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.BooleanValue.Type">
+            <summary>
+            값 종류 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.BooleanValue.#ctor(System.Boolean)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.BooleanValue.ToBoolean">
+            <summary>
+            논리 변환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.BooleanValue.ToString">
+            <summary>
+            문자열 변환.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.FunctionValue">
+            <summary>
+            함수 값.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.FunctionValue.Value">
+            <summary>
+            실제 값 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.FunctionValue.Type">
+            <summary>
+            값 종류 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.FunctionValue.#ctor(Crockhead.Scripting.Function)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.FunctionValue.ToBoolean">
+            <summary>
+            논리 변환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.FunctionValue.ToString">
+            <summary>
+            문자열 변환.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.NullValue">
+            <summary>
+            널 값.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Scripting.NullValue.SharedInstance">
+            <summary>
+            공유 변수.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.NullValue.Value">
+            <summary>
+            실제 값 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.NullValue.Type">
+            <summary>
+            값 종류 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.NullValue.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.NullValue.ToBoolean">
+            <summary>
+            논리 변환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.NullValue.ToString">
+            <summary>
+            문자열 변환.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.NumberValue">
+            <summary>
+            숫자 값.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.NumberValue.Value">
+            <summary>
+            실제 값 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.NumberValue.Type">
+            <summary>
+            값 종류 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.NumberValue.#ctor(Crockhead.Scripting.Number)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.NumberValue.ToBoolean">
+            <summary>
+            논리 변환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.NumberValue.ToString">
+            <summary>
+            문자열 변환.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.StringValue">
+            <summary>
+            문자열 값.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.StringValue.Value">
+            <summary>
+            실제 값 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.StringValue.Type">
+            <summary>
+            값 종류 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.StringValue.#ctor(System.String)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.StringValue.ToBoolean">
+            <summary>
+            논리 변환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.StringValue.ToString">
+            <summary>
+            문자열 변환.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Scripting.Variable">
+            <summary>
+            스크립트에서 변수로 맵핑되는 데이터 객체.
+            <para>이름과 영역은 세션쪽과 스코프쪽에서 관리됨.</para>
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.Variable.Type">
+            <summary>
+            값 종류 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Scripting.Variable.Value">
+            <summary>
+            실제 값 프로퍼티. (객체)
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Variable.#ctor(Crockhead.Scripting.ValueType,Crockhead.Scripting.Value)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Variable.ToBoolean">
+            <summary>
+            논리 변환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Variable.ToNumber">
+            <summary>
+            숫자 변환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Variable.ToFunction">
+            <summary>
+            함수 변환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Variable.ToString">
+            <summary>
+            문자열 변환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Variable.Null">
+            <summary>
+            널 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Variable.Boolean(System.Boolean)">
+            <summary>
+            논리 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Variable.Number(Crockhead.Scripting.Number)">
+            <summary>
+            숫자 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Variable.NumberFromLong(System.Int64)">
+            <summary>
+            숫자 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Variable.NumberFromDouble(System.Double)">
+            <summary>
+            숫자 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Variable.String(System.String)">
+            <summary>
+            문자열 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Scripting.Variable.Function(Crockhead.Scripting.Function)">
+            <summary>
+            함수 생성.
+            </summary>
+        </member>
+    </members>
+</doc>

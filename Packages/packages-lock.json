@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.crockheadstudio.unity": {
+      "version": "https://github.com/ddukbaek2/Crockhead.Unity.git#release",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "52599c570a29353c2356a96c928b46a8e48a7c5e"
+    },
     "com.unity.ai.navigation": {
       "version": "2.0.10",
       "depth": 0,

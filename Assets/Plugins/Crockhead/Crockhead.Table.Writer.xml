@@ -1,0 +1,251 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Crockhead.Table.Writer</name>
+    </assembly>
+    <members>
+        <member name="T:Crockhead.Table.TextWriter">
+            <summary>
+            코드 라이터.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Table.TextWriter.m_StringBuilder">
+            <summary>
+            문자열 처리기.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Table.TextWriter.m_IndentLevel">
+            <summary>
+            들여쓰기 수준.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.TextWriter.IndentLevel">
+            <summary>
+            들여쓰기 수준 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.TextWriter.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.TextWriter.OnDispose(System.Boolean)">
+            <summary>
+            해제됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.TextWriter.IncreaseIndentLevel">
+            <summary>
+            들여쓰기 수준 증가.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.TextWriter.DecreaseIndentLevel">
+            <summary>
+            들여쓰기 수준 감소.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.TextWriter.Clear">
+            <summary>
+            비우기.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.TextWriter.WriteIndentLevel">
+            <summary>
+            들여쓰기.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.TextWriter.BeginWrite">
+            <summary>
+            쓰기 시작. (들여쓰기)
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.TextWriter.Write(System.String)">
+            <summary>
+            쓰기.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.TextWriter.EndWrite">
+            <summary>
+            쓰기 종료. (개행)
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.TextWriter.WriteLine">
+            <summary>
+            한줄 쓰기.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.TextWriter.WriteLine(System.String)">
+            <summary>
+            한줄 쓰기.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.TextWriter.ToString">
+            <summary>
+            문자열 반환.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.DataTable">
+            <summary>
+            데이터 테이블.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.DataTable.Group">
+            <summary>
+            그룹.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.DataTable.Name">
+            <summary>
+            이름.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.DataTable.Fields">
+            <summary>
+            필드 목록.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.DataTable.Types">
+            <summary>
+            타입 목록.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.DataTable.Comments">
+            <summary>
+            주석 목록.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.DataTable.Options">
+            <summary>
+            옵션 목록.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.DataTable.Records">
+            <summary>
+            레코드 목록.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.DataTable.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.DataTableWritter">
+            <summary>
+            테이블 생성기.
+            <para>ExcelDataReader 기반.</para>
+            </summary>
+        </member>
+        <member name="F:Crockhead.Table.DataTableWritter.Properties">
+            <summary>
+            프로퍼티 목록.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Table.DataTableWritter.NoneStringMappingTypes">
+            <summary>
+            비 문자열 값 타입 목록.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Table.DataTableWritter.m_TextWriter">
+            <summary>
+            텍스트 생성기.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Table.DataTableWritter.m_RawTables">
+            <summary>
+            원시 테이블 목록.
+            <para>Dictionary: { Key: {XLSXFilePath}, Value: { List: {RawTable} } }</para>
+            </summary>
+        </member>
+        <member name="F:Crockhead.Table.DataTableWritter.m_DataTables">
+            <summary>
+            데이터 테이블 목록.
+            <para>Dictionary: { Key: {TableGroupName}, Value: Dictionary: { Key: {TableName}, Value: {DataTable} } }</para>
+            </summary>
+        </member>
+        <member name="F:Crockhead.Table.DataTableWritter.m_Logger">
+            <summary>
+            로거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.DataTableWritter.#ctor(Crockhead.Logging.Logger)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.DataTableWritter.OnDispose(System.Boolean)">
+            <summary>
+            해제됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.DataTableWritter.CreateRawTablesFromXLSXFile(System.String)">
+            <summary>
+            원시 테이블 목록 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.DataTableWritter.CreateDataTableFromRawTable(Crockhead.Table.RawTable)">
+            <summary>
+            데이터 테이블 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.DataTableWritter.CreateCSToFile(System.String,Crockhead.Table.DataTable)">
+            <summary>
+            CS 파일 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.DataTableWritter.CreateCSToFile(System.String,Crockhead.Table.DataTable,System.String)">
+            <summary>
+            CS 파일 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.DataTableWritter.CreateCSToFile(System.String,Crockhead.Table.DataTable,System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            CS 파일 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.DataTableWritter.CreateJSONToFile(System.String,Crockhead.Table.DataTable)">
+            <summary>
+            JSON 파일 생성.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.DataTableWritter.IntegrateJSONTest(System.String,Crockhead.Table.DataTable)">
+            <summary>
+            JSON 정합성 테스트.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.EnumTable">
+            <summary>
+            열거체 테이블.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.RawTable">
+            <summary>
+            원시 테이블. (2차원 배열)
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.RawTable.FilePath">
+            <summary>
+            파일 경로.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.RawTable.Group">
+            <summary>
+            그룹.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.RawTable.Name">
+            <summary>
+            이름.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.RawTable.Value">
+            <summary>
+            2차원 배열 데이터.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.RawTable.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+    </members>
+</doc>

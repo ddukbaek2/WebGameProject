@@ -55,11 +55,11 @@ namespace WebGameProject
 
 			// 입력 설정.
 			m_MoveAction = new InputAction("Move", InputActionType.Value);
-			m_MoveAction.AddCompositeBinding("2DVector")
-				.With("Up", "<Keyboard>/w")
-				.With("Down", "<Keyboard>/s")
-				.With("Left", "<Keyboard>/a")
-				.With("Right", "<Keyboard>/d");
+			var syntax = m_MoveAction.AddCompositeBinding("2DVector");
+			syntax.With("Up", "<Keyboard>/w");
+			syntax.With("Down", "<Keyboard>/s");
+			syntax.With("Left", "<Keyboard>/a");
+			syntax.With("Right", "<Keyboard>/d");
 
 			m_SprintAction = new InputAction("Sprint", InputActionType.Button, "<Keyboard>/leftShift");
 		}

@@ -1,0 +1,757 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Crockhead.Table</name>
+    </assembly>
+    <members>
+        <member name="T:ExampleTable">
+            <summary>
+            샘플 테이블.
+            </summary>
+        </member>
+        <member name="M:ExampleTable.OnCreate">
+            <summary>
+            생성.
+            </summary>
+        </member>
+        <member name="M:ExampleTable.OnDispose">
+            <summary>
+            해제됨.
+            </summary>
+        </member>
+        <member name="T:ExampleTableRecord">
+            <summary>
+            ExampleTable Recordable Data.
+            </summary>
+        </member>
+        <member name="P:ExampleTableRecord.Id">
+            <summary>
+            Id.
+            </summary>
+        </member>
+        <member name="P:ExampleTableRecord.StringValue">
+            <summary>
+            StringValue.
+            </summary>
+        </member>
+        <member name="P:ExampleTableRecord.FloatValue">
+            <summary>
+            FloatValue.
+            </summary>
+        </member>
+        <member name="P:ExampleTableRecord.IntDictionaryValue">
+            <summary>
+            IntDictionaryValue.
+            </summary>
+        </member>
+        <member name="P:ExampleTableRecord.StringListValue">
+            <summary>
+            StringListValue.
+            </summary>
+        </member>
+        <member name="P:ExampleTableRecord.IntListValue">
+            <summary>
+            IntListValue.
+            </summary>
+        </member>
+        <member name="P:ExampleTableRecord.EmptyIntDictionaryValue">
+            <summary>
+            EmptyIntDictionaryValue.
+            </summary>
+        </member>
+        <member name="P:ExampleTableRecord.EmptyIntListValue">
+            <summary>
+            EmptyIntListValue.
+            </summary>
+        </member>
+        <member name="P:ExampleTableRecord.BoolValue">
+            <summary>
+            BoolValue.
+            </summary>
+        </member>
+        <member name="M:ExampleTableRecord.Crockhead#Table#IRecordable#GetFieldCount">
+            <summary>
+            필드 갯수.
+            </summary>
+        </member>
+        <member name="M:ExampleTableRecord.Crockhead#Table#IRecordable#GetFieldName(System.Int32)">
+            <summary>
+            필드 이름.
+            </summary>
+        </member>
+        <member name="M:ExampleTableRecord.Crockhead#Table#IRecordable#GetFieldType(System.Int32)">
+            <summary>
+            필드 타입.
+            </summary>
+        </member>
+        <member name="M:ExampleTableRecord.Crockhead#Table#IRecordable#GetFieldValue(System.Int32)">
+            <summary>
+            필드 값.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.IRecordable">
+            <summary>
+            테이블 1건에 대한 데이터 인터페이스.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.IRecordable.Id">
+            <summary>
+            고유 식별자.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.IRecordable.GetFieldCount">
+            <summary>
+            필드 갯수.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.IRecordable.GetFieldName(System.Int32)">
+            <summary>
+            필드 이름.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.IRecordable.GetFieldType(System.Int32)">
+            <summary>
+            필드 타입.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.IRecordable.GetFieldValue(System.Int32)">
+            <summary>
+            필드 값.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.ITable">
+            <summary>
+            테이블 인터페이스.
+            <para>기록 객체를 보관하는 컬렉션.</para>
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.ITable.Count">
+            <summary>
+            레코드 갯수 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.ITable.Clear">
+            <summary>
+            모든 레코드 제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.ITable.Add(Crockhead.Table.IRecordable)">
+            <summary>
+            레코드 추가.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.ITable.AddRange(System.Collections.Generic.IEnumerable{Crockhead.Table.IRecordable})">
+            <summary>
+            레코드 범위 추가.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.ITable.Remove(System.Int32)">
+            <summary>
+            레코드 제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.ITable.Contains(System.Int32)">
+            <summary>
+            레코드 포함 여부 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.ITable.Contains(System.Predicate{Crockhead.Table.IRecordable})">
+            <summary>
+            레코드 포함 여부 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.ITable.Find(System.Int32)">
+            <summary>
+            조건에 맞는 레코드 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.ITable.Find(System.Predicate{Crockhead.Table.IRecordable})">
+            <summary>
+            조건에 맞는 레코드 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.ITable.FindAll(System.Predicate{Crockhead.Table.IRecordable})">
+            <summary>
+            조건에 맞는 모든 레코드 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.ITable.All">
+            <summary>
+            모든 레코드 반환.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.ITable`1">
+            <summary>
+            제네릭 테이블 인터페이스.
+            <para>기록 객체를 보관하는 컬렉션.</para>
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.ITable`1.Add(`0)">
+            <summary>
+            레코드 추가.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.ITable`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            레코드 범위 추가.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.ITable`1.Contains(System.Predicate{`0})">
+            <summary>
+            레코드 포함 여부 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.ITable`1.Find(System.Int32)">
+            <summary>
+            조건에 맞는 레코드 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.ITable`1.Find(System.Predicate{`0})">
+            <summary>
+            조건에 맞는 레코드 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.ITable`1.FindAll(System.Predicate{`0})">
+            <summary>
+            조건에 맞는 모든 레코드 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.ITable`1.All">
+            <summary>
+            모든 레코드 반환.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.Recordable">
+            <summary>
+            테이블에서 사용되는 1건의 기록 데이터.
+            <para>IRecordable 인터페이스 구현체.</para>
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.Recordable.Fields">
+            <summary>
+            필드 배열 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.Recordable.Id">
+            <summary>
+            고유 식별자 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Recordable.Crockhead#Table#IRecordable#GetFieldCount">
+            <summary>
+            필드 갯수.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Recordable.Crockhead#Table#IRecordable#GetFieldName(System.Int32)">
+            <summary>
+            필드 이름.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Recordable.Crockhead#Table#IRecordable#GetFieldType(System.Int32)">
+            <summary>
+            필드 타입.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Recordable.Crockhead#Table#IRecordable#GetFieldValue(System.Int32)">
+            <summary>
+            필드 값.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.Table">
+            <summary>
+            테이블.
+            <para>기록 객체를 보관하는 컬렉션.</para>
+            <para>모든 레코드는 동일 컬렉션안에서 정수형 고유식별자를 들고 있으며 해당 레코드의 고유식별자를 키로 사용.</para>
+            <para>IEnumerable.Recordable 인터페이스 구현체.</para>
+            </summary>
+        </member>
+        <member name="F:Crockhead.Table.Table.m_Records">
+            <summary>
+            레코드 목록.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.Table.Count">
+            <summary>
+            갯수 프로퍼티.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.Table.Values">
+            <summary>
+            레코드 목록 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table.#ctor(System.Collections.Generic.IEnumerable{Crockhead.Table.IRecordable})">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table.OnDispose(System.Boolean)">
+            <summary>
+            해제됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table.Clear">
+            <summary>
+            모든 레코드 제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table.Add(Crockhead.Table.IRecordable)">
+            <summary>
+            레코드 추가.
+            <para>고유식별자가 기존에 있는 경우는 교체.</para>
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table.AddRange(System.Collections.Generic.IEnumerable{Crockhead.Table.IRecordable})">
+            <summary>
+            레코드 범위 추가.
+            <para>고유식별자가 기존에 있는 경우는 교체.</para>
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table.Remove(System.Int32)">
+            <summary>
+            레코드 제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table.Contains(System.Int32)">
+            <summary>
+            레코드 포함 여부 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table.Contains(System.Predicate{Crockhead.Table.IRecordable})">
+            <summary>
+            레코드 포함 여부 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table.Find(System.Int32)">
+            <summary>
+            조건에 맞는 레코드를 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table.Find(System.Predicate{Crockhead.Table.IRecordable})">
+            <summary>
+            조건에 맞는 레코드를 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table.FindAll(System.Predicate{Crockhead.Table.IRecordable})">
+            <summary>
+            조건에 맞는 모든 레코드를 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table.All">
+            <summary>
+            모든 레코드 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table.System#Collections#Generic#IEnumerable{Crockhead#Table#IRecordable}#GetEnumerator">
+            <summary>
+            열거 제공자 반환.
+            <para>IEnumerable.Recordable 인터페이스 구현.</para>
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            열거 제공자 반환.
+            <para>IEnumerable 인터페이스 구현.</para>
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.Table`1">
+            <summary>
+            제너릭 테이블.
+            <para>기록 객체를 보관하는 컬렉션.</para>
+            <para>모든 레코드는 동일 컬렉션안에서 정수형 고유식별자를 들고 있으며 해당 레코드의 고유식별자를 키로 사용.</para>
+            <para>ITable 인터페이스 구현체.</para>
+            </summary>
+        </member>
+        <member name="F:Crockhead.Table.Table`1.m_Records">
+            <summary>
+            레코드 목록.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.Table`1.Count">
+            <summary>
+            갯수 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.OnDispose(System.Boolean)">
+            <summary>
+            해제됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.Clear">
+            <summary>
+            모든 레코드 제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.Add(`0)">
+            <summary>
+            레코드 추가.
+            <para>고유식별자가 기존에 있는 경우는 교체.</para>
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            레코드 범위 추가.
+            <para>고유식별자가 기존에 있는 경우는 교체.</para>
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.Remove(System.Int32)">
+            <summary>
+            레코드 제거.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.Contains(System.Int32)">
+            <summary>
+            레코드 포함 여부 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.Contains(System.Predicate{`0})">
+            <summary>
+            레코드 포함 여부 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.Find(System.Int32)">
+            <summary>
+            조건에 맞는 레코드 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.Find(System.Predicate{`0})">
+            <summary>
+            조건에 맞는 레코드 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.FindAll(System.Predicate{`0})">
+            <summary>
+            조건에 맞는 모든 레코드 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.All">
+            <summary>
+            모든 레코드 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.Crockhead#Table#ITable#Add(Crockhead.Table.IRecordable)">
+            <summary>
+            레코드 추가.
+            <para>ITable 인터페이스 구현.</para>
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.Crockhead#Table#ITable#AddRange(System.Collections.Generic.IEnumerable{Crockhead.Table.IRecordable})">
+            <summary>
+            레코드 범위 추가.
+            <para>ITable 인터페이스 구현.</para>
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.Crockhead#Table#ITable#Contains(System.Predicate{Crockhead.Table.IRecordable})">
+            <summary>
+            레코드 포함 여부 반환.
+            <para>ITable 인터페이스 구현.</para>
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.Crockhead#Table#ITable#Find(System.Int32)">
+            <summary>
+            조건에 맞는 레코드 반환.
+            <para>ITable 인터페이스 구현.</para>
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.Crockhead#Table#ITable#Find(System.Predicate{Crockhead.Table.IRecordable})">
+            <summary>
+            조건에 맞는 레코드 반환.
+            <para>ITable 인터페이스 구현.</para>
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.Crockhead#Table#ITable#FindAll(System.Predicate{Crockhead.Table.IRecordable})">
+            <summary>
+            조건에 맞는 모든 레코드 반환.
+            <para>ITable 인터페이스 구현.</para>
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.Crockhead#Table#ITable#All">
+            <summary>
+            모든 레코드 반환.
+            <para>ITable 인터페이스 구현.</para>
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.System#Collections#Generic#IEnumerable{TRecordable}#GetEnumerator">
+            <summary>
+            열거 제공자 반환.
+            <para>IEnumerable.TRecordable 인터페이스 구현.</para>
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.Table`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            열거 제공자 반환.
+            <para>IEnumerable 인터페이스 구현.</para>
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.IRecordArrayReader`1">
+            <summary>
+            레코드 배열 로더 인터페이스.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.IRecordArrayReader`1.Records">
+            <summary>
+            읽어들인 레코드 목록 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.IRecordArrayReader`1.Read">
+            <summary>
+            불러오기. (동기)
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.IRecordArrayReader`1.ReadAsync">
+            <summary>
+            불러오기. (비동기)
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.RecordArrayFileReader`1">
+            <summary>
+            레코드 배열 파일 로더.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Table.RecordArrayFileReader`1.m_FilePath">
+            <summary>
+            경로.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Table.RecordArrayFileReader`1.m_Records">
+            <summary>
+            레코드 목록.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.RecordArrayFileReader`1.Records">
+            <summary>
+            읽어들인 레코드 목록 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.RecordArrayFileReader`1.#ctor(System.Object)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.RecordArrayFileReader`1.#ctor(Crockhead.Core.FilePathAttribute)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.RecordArrayFileReader`1.#ctor(System.String)">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.RecordArrayFileReader`1.OnDispose(System.Boolean)">
+            <summary>
+            해제됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.RecordArrayFileReader`1.InternalInitialize(System.String)">
+            <summary>
+            초기화.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.RecordArrayFileReader`1.InternalInitialize(Crockhead.Core.FilePathAttribute)">
+            <summary>
+            초기화.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.RecordArrayFileReader`1.Read">
+            <summary>
+            불러오기.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.RecordArrayFileReader`1.ReadAsync">
+            <summary>
+            불러오기. (비동기)
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.SharedTable`2">
+            <summary>
+            공유 테이블.
+            </summary>
+        </member>
+        <member name="F:Crockhead.Table.SharedTable`2.m_Collection">
+            <summary>
+            컬렉션.
+            </summary>
+        </member>
+        <member name="P:Crockhead.Table.SharedTable`2.Collection">
+            <summary>
+            컬렉션 프로퍼티.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.SharedTable`2.#ctor">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.SharedTable`2.OnCreate">
+            <summary>
+            생성됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.SharedTable`2.OnDispose">
+            <summary>
+            해제됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.SharedTable`2.OnTableDidLoad">
+            <summary>
+            테이블 로드 됨.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.SharedTable`2.LoadTable(Crockhead.Table.IRecordArrayReader{`1})">
+            <summary>
+            로드.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.SharedTable`2.Contains(System.Int32)">
+            <summary>
+            레코드 포함 여부 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.SharedTable`2.Find(System.Int32)">
+            <summary>
+            조건에 맞는 레코드 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.SharedTable`2.Find(System.Predicate{`1})">
+            <summary>
+            조건에 맞는 레코드 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.SharedTable`2.FindAll(System.Predicate{`1})">
+            <summary>
+            조건에 맞는 모든 레코드 반환.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.SharedTable`2.All">
+            <summary>
+            모든 레코드 반환.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.JsonDictionary`3">
+            <summary>
+            테이블 필드로 사용 가능한 딕셔너리.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.JsonDictionary`3.Converter">
+            <summary>
+            변환 처리기.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.JsonDictionary`3.Converter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,`0,System.Boolean,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            읽기.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.JsonDictionary`3.Converter.WriteJson(Newtonsoft.Json.JsonWriter,`0,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            쓰기.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.BoolDictionary">
+            <summary>
+            논리 사전 배열.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.StringDictionary">
+            <summary>
+            문자열 사전 배열.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.ShortDictionary">
+            <summary>
+            정수 사전 배열.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.IntDictionary">
+            <summary>
+            정수 사전 배열.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.LongDictionary">
+            <summary>
+            정수 사전 배열.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.FloatDictionary">
+            <summary>
+            실수 사전 배열.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.DoubleDictionary">
+            <summary>
+            실수 사전 배열.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.JsonList`2">
+            <summary>
+            테이블 필드로 사용 가능한 리스트.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.JsonList`2.Converter">
+            <summary>
+            변환 처리기.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.JsonList`2.Converter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,`0,System.Boolean,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            읽기.
+            </summary>
+        </member>
+        <member name="M:Crockhead.Table.JsonList`2.Converter.WriteJson(Newtonsoft.Json.JsonWriter,`0,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            쓰기.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.BoolList">
+            <summary>
+            논리 목록.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.StringList">
+            <summary>
+            문자열 목록.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.ShortList">
+            <summary>
+            정수 목록.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.IntList">
+            <summary>
+            정수 목록.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.LongList">
+            <summary>
+            정수 목록.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.FloatList">
+            <summary>
+            실수 목록.
+            </summary>
+        </member>
+        <member name="T:Crockhead.Table.DoubleList">
+            <summary>
+            실수 목록.
+            </summary>
+        </member>
+    </members>
+</doc>

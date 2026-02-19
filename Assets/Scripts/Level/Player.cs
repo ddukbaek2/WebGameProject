@@ -9,5 +9,12 @@ namespace WebGameProject
 	[RequireComponent(typeof(CharacterController))]
 	public abstract class Player : UBehaviour
 	{
+		/// <summary>
+		/// 갱신됨.
+		/// </summary>
+		protected virtual void Update()
+		{
+
+		}
 	}
 }

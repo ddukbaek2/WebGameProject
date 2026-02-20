@@ -9,7 +9,14 @@
 ## 프로젝트 기반
 - Unity6.0 LTS
 - JSON.NET (유니티 패키지)
+- Crockhead.Core (자작 NUGET 패키지)
 - Crockhead.Unity (자작 유니티 패키지)
+
+
+## 디플로이 환경
+- 클라이언트: 개인 시놀로지 나스의 도커에서 NGINX Alpine 기반 컨테이너로 웹빌드된 유니티 HTML 서빙.  
+- 서버: 개인 시놀로지 나스의 도커에서 .NET 기반으로 자체 작업한 데디케이티드 서버 연동. (웹소켓)   
+
 
 ## 결과물
 ~~~text
@@ -17,5 +24,7 @@ https://wgp.ddukbaek2.com
 ~~~
 
 
-## ...
+## 개발 계획
 - 작성중 ...
+
+

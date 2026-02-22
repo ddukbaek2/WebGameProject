@@ -14,6 +14,9 @@ namespace WebGameProject
 	{
 		private UILabelView m_LabelView;
 		private StringBuilder m_StringBuilder;
+		private float m_CheckFrameRateTime;
+		private int m_CheckFrameCount;
+		private int m_FramePerSecond;
 
 		/// <summary>
 		/// 생성됨.
@@ -24,6 +27,9 @@ namespace WebGameProject
 
 			m_LabelView = GetComponent<UILabelView>();
 			m_StringBuilder = new StringBuilder();
+			m_CheckFrameRateTime = 0f;
+			m_CheckFrameCount = 0;
+			m_FramePerSecond = 0;
 		}
 
 		/// <summary>
@@ -32,8 +38,6 @@ namespace WebGameProject
 		protected override void Start()
 		{
 			base.Start();
-
-
 		}
 
 		/// <summary>
@@ -41,30 +45,88 @@ namespace WebGameProject
 		/// </summary>
 		private void Update()
 		{
-			// managed heap(모노/IL2CPP 관리영역) 관련
+			m_StringBuilder.Clear();
+
+			CheckFramePerSecond(m_StringBuilder);
+			CheckMemory(m_StringBuilder);
+
+			m_StringBuilder.AppendLine($"Cursor.lockState: {Cursor.lockState}");
+			m_StringBuilder.AppendLine($"Cursor.visible: {Cursor.visible}");
+			m_LabelView.text = m_StringBuilder.ToString();
+		}
+
+		/// <summary>
+		/// 초당 프레임 체크.
+		/// </summary>
+		private void CheckFramePerSecond(StringBuilder stringBuilder)
+		{
+			++m_CheckFrameCount;
+			m_CheckFrameRateTime += Time.unscaledDeltaTime;
+			if (m_CheckFrameRateTime >= 1f)
+			{
+				m_FramePerSecond = (int)(m_CheckFrameCount / m_CheckFrameRateTime);
+				m_CheckFrameCount = 0;
+				m_CheckFrameRateTime = 0f;
+			}
+
+			stringBuilder.AppendLine($"Frame Per Second: {m_FramePerSecond}");
+		}
+
+		/// <summary>
+		/// 메모리 체크.
+		/// </summary>
+		private void CheckMemory(StringBuilder stringBuilder)
+		{
+			// 모노/ILL2CPP 할당.
 			var monoUsed = Profiler.GetMonoUsedSizeLong();
 			var monoHeap = Profiler.GetMonoHeapSizeLong();
 
-			// Unity 네이티브 영역 추정(플랫폼에 따라 0/부정확 가능)
+			// 유니티 할당.
 			var totalAllocated = Profiler.GetTotalAllocatedMemoryLong();
 			var totalReserved = Profiler.GetTotalReservedMemoryLong();
 			var totalUnusedReserved = Profiler.GetTotalUnusedReservedMemoryLong();
 
-			// 그래픽 리소스 추정 (WebGL에서 의미 있게 나오는 편)
-			var gfxDriver = Profiler.GetAllocatedMemoryForGraphicsDriver();
+			// 그래픽 할당.
+			//var gfxDriver = Profiler.GetAllocatedMemoryForGraphicsDriver();			
+			var textureAllocated = GetTotalAllocatedMemoryLong(Resources.FindObjectsOfTypeAll<Texture>());
+			var meshAllocated = GetTotalAllocatedMemoryLong(Resources.FindObjectsOfTypeAll<Mesh>());
+			var materialAllocated = GetTotalAllocatedMemoryLong(Resources.FindObjectsOfTypeAll<Material>());
 
 			// 출력.
-			m_StringBuilder.Clear();
-			m_StringBuilder.AppendLine($"monoUsed={ToMB(monoUsed)} monoHeap={ToMB(monoHeap)}");
-			m_StringBuilder.AppendLine($"totalAllocated={ToMB(totalAllocated)} totalReserved={ToMB(totalReserved)} totalUnusedReserved={ToMB(totalUnusedReserved)}");
-			m_StringBuilder.AppendLine($"gfxDriver={ToMB(gfxDriver)}");
-			m_LabelView.text = m_StringBuilder.ToString();
+			stringBuilder.AppendLine($"monoUsed: {ToMBString(monoUsed)}");
+			stringBuilder.AppendLine($"monoHeap: {ToMBString(monoHeap)}");
+			stringBuilder.AppendLine($"totalAllocated: {ToMBString(totalAllocated)}");
+			stringBuilder.AppendLine($"totalReserved: {ToMBString(totalReserved)}");
+			stringBuilder.AppendLine($"totalUnusedReserved: {ToMBString(totalUnusedReserved)}");
+			stringBuilder.AppendLine($"textureAllocated: {ToMBString(textureAllocated)}");
+			stringBuilder.AppendLine($"meshAllocated: {ToMBString(meshAllocated)}");
+			stringBuilder.AppendLine($"materialAllocated: {ToMBString(materialAllocated)}");
+		}
+
+		/// <summary>
+		/// 애셋들의 크기를 반환.
+		/// </summary>
+		public static long GetTotalAllocatedMemoryLong(Object[] objects)
+		{
+			var size = 0L;
+			if (objects == null)
+				return size;
+
+			foreach (var obj in objects)
+			{
+				if (obj == null)
+					continue;
+
+				size += Profiler.GetRuntimeMemorySizeLong(obj);
+			}
+
+			return size;
 		}
 
 		/// <summary>
 		/// 메가바이트 변환.
 		/// </summary>
-		public static string ToMB(long bytes, int decimals = 2)
+		public static string ToMBString(long bytes, int decimals = 2)
 		{
 			var mb = bytes / (1024.0 * 1024.0);
 			var format = "F" + Mathf.Max(0, decimals);

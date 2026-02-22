@@ -16,8 +16,8 @@ namespace WebGameProject
 
 		[Header("Look")]
 		[SerializeField] private float m_MouseSensitivity = 0.12f;
-		[SerializeField] private float m_PitchMin = -85f;
-		[SerializeField] private float m_PitchMax = 85f;
+		[SerializeField][Range(-85f, 0f)] private float m_PitchMin = -85f;
+		[SerializeField][Range(0, 85f)] private float m_PitchMax = 85f;
 
 		[Header("Follow")]
 		[SerializeField] private bool m_IsSmoothFollow = false;
@@ -71,6 +71,8 @@ namespace WebGameProject
 
 			//Cursor.lockState = CursorLockMode.Locked;
 			//Cursor.visible = false;
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
 
 			if (m_PlayerTransform != null)
 				m_Yaw = m_PlayerTransform.eulerAngles.y;
